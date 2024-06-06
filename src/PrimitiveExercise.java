@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class PrimitiveExercise {
+public class PrimitiveExercise {
     public static void main(String[] argh) {
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
