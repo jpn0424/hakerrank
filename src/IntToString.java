@@ -27,20 +27,20 @@ public class IntToString {
             System.out.println("Unsuccessful Termination!!");
         }
     }
-}
 
-//The following class will prevent you from terminating the code using exit(0)!
-class DoNotTerminate {
-    public static void forbidExit() {
-        final SecurityManager securityManager = new SecurityManager() {
-            @Override
-            public void checkPermission(Permission permission) {
-                if (permission.getName().contains("exitVM")) {
-                    throw new ExitTrappedException();
+    //The following class will prevent you from terminating the code using exit(0)!
+    public static class DoNotTerminate {
+        public static void forbidExit() {
+            final SecurityManager securityManager = new SecurityManager() {
+                @Override
+                public void checkPermission(Permission permission) {
+                    if (permission.getName().contains("exitVM")) {
+                        throw new ExitTrappedException();
+                    }
                 }
-            }
-        };
-        System.setSecurityManager(securityManager);
+            };
+            System.setSecurityManager(securityManager);
+        }
     }
 
     public static class ExitTrappedException extends SecurityException {
